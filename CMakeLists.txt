@@ -35,6 +35,8 @@ add_executable(
     inc/tikki/hand.h 
     inc/tikki/card.h
 )
+target_compile_features(tikki PUBLIC cxx_std_17)
+set_target_properties(tikki PROPERTIES CXX_EXTENSIONS OFF)
 target_include_directories(tikki PRIVATE inc/tikki)
 target_link_libraries(tikki PRIVATE spdlog::spdlog cxxopts::cxxopts)
 

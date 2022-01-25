@@ -7,6 +7,8 @@
         "initializer_list": "cpp",
         "regex": "cpp",
         "utility": "cpp",
-        "iosfwd": "cpp"
+        "iosfwd": "cpp",
+        "type_traits": "cpp",
+        "*.tcc": "cpp"
     }
 }

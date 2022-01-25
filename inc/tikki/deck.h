@@ -2,20 +2,20 @@
 #define DECK_H
 
 #include "card.h"
+#include <deque>
 #include <memory>
-#include <vector>
 
 class Deck {
 private:
     const int n_ranks = 13;
     const int n_suits = 4;
-    std::vector<std::unique_ptr<Card>> _deck;
+    std::deque<std::unique_ptr<Card>> _deck;
 
 public:
     Deck();
-    // ~Deck();
     void Shuffle();
     std::unique_ptr<Card> Deal();
+    void Back(std::unique_ptr<Card> card);
     friend std::ostream &operator<<(std::ostream &os, const Deck &deck);
 };
 

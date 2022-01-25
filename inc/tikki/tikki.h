@@ -14,7 +14,8 @@ private:
 
 public:
     Tikki(int n_players);
-    // ~Tikki();
+    void Game();
+    void Deal();
     void Play();
 };
 

@@ -39,7 +39,7 @@ int main(int argc, const char **argv) {
 
     // Play Tikki
     Tikki tikki(n_players);
-    tikki.Play();
+    tikki.Game();
 
     return 0;
 }
