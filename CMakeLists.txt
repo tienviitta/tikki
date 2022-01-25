@@ -4,7 +4,8 @@ project(
     tikki 
     VERSION 0.1.0
     DESCRIPTION "Tikki card game"
-    LANGUAGES CXX)
+    LANGUAGES CXX
+)
 
 include(CTest)
 enable_testing()
@@ -22,7 +23,17 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(spdlog cxxopts)
 
-add_executable(tikki main.cpp)
+add_executable(
+    tikki 
+    main.cpp 
+    src/tikki.cpp 
+    src/deck.cpp 
+    src/card.cpp 
+    inc/tikki/tikki.h 
+    inc/tikki/deck.h 
+    inc/tikki/card.h
+)
+target_include_directories(tikki PRIVATE inc/tikki)
 target_link_libraries(tikki PRIVATE spdlog::spdlog cxxopts::cxxopts)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
