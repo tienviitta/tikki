@@ -3,6 +3,7 @@
 #include "spdlog/fmt/ostr.h"
 #include "spdlog/spdlog.h"
 #include "spdlog/stopwatch.h"
+#include "tikki.h"
 
 #include <cstdlib>
 #include <ctime>
@@ -34,24 +35,11 @@ int main(int argc, const char **argv) {
     // Set global log level to debug
     if (debug) {
         spdlog::set_level(spdlog::level::debug);
-        std::srand(0x123456);
-    } else {
-        std::srand(std::time(nullptr));
     }
 
-    // Make a deck
-    Deck deck;
+    // Play Tikki
+    Tikki tikki(n_players);
+    tikki.Play();
 
-    // // Random integers
-    // std::vector<int> rands{};
-    // for (size_t i = 0; i < 30; i++) {
-    //     int uni_rand = std::rand() % (52 - i);
-    //     rands.emplace_back(uni_rand);
-    // }
-    // std::stringstream ss_rands;
-    // std::copy(rands.begin(), rands.end(),
-    //           std::ostream_iterator<int>(ss_rands, ", "));
-    // spdlog::info("  rands: [{}]",
-    //              ss_rands.str().substr(0, ss_rands.str().length() - 2));
     return 0;
 }
