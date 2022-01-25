@@ -15,6 +15,7 @@ public:
     Deck();
     // ~Deck();
     void Shuffle();
+    std::unique_ptr<Card> Deal();
     friend std::ostream &operator<<(std::ostream &os, const Deck &deck);
 };
 

@@ -6,11 +6,17 @@
 
 class Card {
 private:
-    const int _rank;
-    const int _suit;
+    int _rank;
+    int _suit;
 
 public:
+    Card();
     Card(const int suit, const int rank);
+    ~Card();
+    // Card(Card const &other);
+    // Card &operator=(Card const &other) noexcept;
+    // Card(Card &&other);
+    // Card &operator=(Card &&other);
     friend std::ostream &operator<<(std::ostream &os, const Card &card);
 };
 

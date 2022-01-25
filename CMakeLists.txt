@@ -28,9 +28,11 @@ add_executable(
     main.cpp 
     src/tikki.cpp 
     src/deck.cpp 
+    src/hand.cpp 
     src/card.cpp 
     inc/tikki/tikki.h 
     inc/tikki/deck.h 
+    inc/tikki/hand.h 
     inc/tikki/card.h
 )
 target_include_directories(tikki PRIVATE inc/tikki)
