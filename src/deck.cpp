@@ -1,6 +1,5 @@
 #include "deck.h"
 #include "card.h"
-#include "spdlog/spdlog.h"
 
 #include <algorithm>
 #include <random>

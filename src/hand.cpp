@@ -1,6 +1,5 @@
 #include "hand.h"
 #include "card.h"
-#include "spdlog/spdlog.h"
 #include <memory>
 
 void Hand::Take(std::unique_ptr<Card> card) {
