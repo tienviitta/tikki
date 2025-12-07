@@ -6,7 +6,7 @@ let computerScore = 0;
 let currentTrick = { player: null, computer: null }; // Cards played in current trick
 let requestedSuit = null; // The suit that was requested for this trick
 let isPlayerTurn = true; // Who starts/leads the trick
-let tricksWon = { player: 0, computer: 0 }; // Tracks tricks won in current round
+let lastTrickWinner = null; // Tracks who won the last/most recent trick
 
 // Set up deal button event listener
 document.getElementById("deal").addEventListener("click", dealCards);
@@ -139,7 +139,7 @@ async function dealCards() {
     // Reset trick state
     currentTrick = { player: null, computer: null };
     requestedSuit = null;
-    tricksWon = { player: 0, computer: 0 };
+    lastTrickWinner = null;
     clearPlayedCards();
 
     // Player goes first
@@ -353,8 +353,8 @@ function resolveTrick() {
 
   console.log(`${winner} wins the trick!`);
 
-  // Track tricks won
-  tricksWon[winner]++;
+  // Track last trick winner
+  lastTrickWinner = winner;
 
   // Winner leads next trick
   isPlayerTurn = winner === "player";
@@ -389,14 +389,12 @@ function clearPlayedCards() {
  * End the current round and award points
  */
 function endRound() {
-  console.log(
-    `Round over! Player tricks: ${tricksWon.player}, Computer tricks: ${tricksWon.computer}`
-  );
+  console.log(`Round over! Winner of last trick: ${lastTrickWinner}`);
 
   // Award point to winner of last trick
-  if (tricksWon.player > tricksWon.computer) {
+  if (lastTrickWinner === "player") {
     playerScore++;
-  } else if (tricksWon.computer > tricksWon.player) {
+  } else if (lastTrickWinner === "computer") {
     computerScore++;
   }
 
@@ -405,16 +403,27 @@ function endRound() {
     "score"
   ).textContent = `${playerScore}-${computerScore}`;
 
-  // Reset for next round
-  tricksWon = { player: 0, computer: 0 };
-  isPlayerTurn = true;
+  console.log(`Score: Player ${playerScore} - Computer ${computerScore}`);
 
-  // Check if game is won
+  // Check if game is won (first to 3 points)
   if (playerScore >= 3) {
     console.log("Player wins the game!");
-    alert("You win the game!");
+    alert(
+      "You win the game! Final score: " + playerScore + "-" + computerScore
+    );
+    return;
   } else if (computerScore >= 3) {
     console.log("Computer wins the game!");
-    alert("Computer wins the game!");
+    alert(
+      "Computer wins the game! Final score: " +
+        playerScore +
+        "-" +
+        computerScore
+    );
+    return;
   }
+
+  // Reset for next round
+  lastTrickWinner = null;
+  isPlayerTurn = true;
 }
