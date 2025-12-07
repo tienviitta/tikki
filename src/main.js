@@ -415,8 +415,8 @@ function resolveTrick() {
  * Clear played cards from the center area
  */
 function clearPlayedCards() {
-  document.getElementById("player-card").style.opacity = "0";
-  document.getElementById("computer-card").style.opacity = "0";
+  document.getElementById("player-card").style.opacity = "0.5";
+  document.getElementById("computer-card").style.opacity = "0.5";
 }
 
 /**
