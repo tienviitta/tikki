@@ -47,6 +47,32 @@ async function fetchNewDeck() {
 }
 
 /**
+ * Reshuffles the existing deck
+ * @returns {Promise<void>}
+ */
+async function reshuffleDeck() {
+  try {
+    if (!deckId) {
+      throw new Error("No deck available. Please create a deck first.");
+    }
+    const response = await fetch(
+      `https://deckofcardsapi.com/api/deck/${deckId}/shuffle/`
+    );
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    if (!data.success) {
+      throw new Error("Failed to reshuffle deck");
+    }
+    console.log("Deck reshuffled. Remaining cards:", data.remaining);
+  } catch (error) {
+    console.error("Error reshuffling deck:", error.message);
+    throw error;
+  }
+}
+
+/**
  * Draws cards from the deck
  * @param {number} count - Number of cards to draw
  * @returns {Promise<Array>} Array of card objects
@@ -66,6 +92,14 @@ async function drawCards(count) {
     if (!data.success) {
       throw new Error("Failed to draw cards");
     }
+
+    // Check if we have enough cards remaining for the next round
+    // If less than 10 cards remain, reshuffle the deck
+    if (data.remaining < 10) {
+      console.log(`Only ${data.remaining} cards left, reshuffling deck...`);
+      await reshuffleDeck();
+    }
+
     return data.cards;
   } catch (error) {
     console.error("Error drawing cards:", error.message);
