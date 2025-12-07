@@ -1,0 +1,118 @@
+:root {
+  /* CSS HEX */
+  --seashell: #fff8f2ff;
+  --celadon: #91c597ff;
+  --sky-blue-light: #87c2d4ff;
+  --pine-teal: #093c39ff;
+  --dark-cyan: #0d9ba3ff;
+
+  /* CSS HSL */
+  --seashell: hsla(28, 100%, 97%, 1);
+  --celadon: hsla(127, 31%, 67%, 1);
+  --sky-blue-light: hsla(194, 47%, 68%, 1);
+  --pine-teal: hsla(176, 74%, 14%, 1);
+  --dark-cyan: hsla(183, 85%, 35%, 1);
+}
+
+/* roboto-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/roboto-v50-latin-regular.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* roboto-700 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/roboto-v50-latin-700.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* roboto-900 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 900;
+  src: url("../fonts/roboto-v50-latin-900.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Roboto", sans-serif;
+  color: var(--seashell);
+  background-color: var(--pine-teal);
+}
+
+#header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100vw;
+  font-weight: 900;
+  background-color: var(--dark-cyan);
+}
+
+#logo,
+#deal,
+#score {
+  padding: 0 1rem;
+}
+
+#deal {
+  color: var(--pine-teal);
+  background-color: var(--seashell);
+  cursor: pointer;
+  border: 2px solid var(--pine-teal);
+  border-radius: 0.25rem;
+}
+
+#deal:active {
+  background-color: var(--celadon);
+}
+
+#main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+}
+
+#computer-hand,
+#computer-card,
+#player-card,
+#player-hand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.25;
+}
+
+#played-cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+#computer-hand,
+#player-hand,
+#played-cards {
+  padding: 0.125rem;
+}
+
+#computer-hand img,
+#player-hand img,
+#computer-card img,
+#player-card img {
+  height: 30vh;
+}
